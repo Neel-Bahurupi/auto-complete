@@ -14,41 +14,49 @@
     
 </head>
 <body>
-
-    <nav class="navbar navbar-light " style="font-size: 25px; font-family: sans-serif; background-color: whitesmoke;">
-        Auto-Complete Feature using trie
-    </nav>
-
-    <div id="container">
-        <div class="text_box" style="display: flex">
-            <form autocomplete="off" style="margin: auto">
-                <h5>Type in the box below...</h5>
-                <br>
-                <div class="autocomplete" style="width:350px;">
-                    <input id="myInput" type="text" placeholder="Search Name...">
-                    
-                    <!--<a class="ks-items autocomplete-items" id="list"></a>-->
-                </div>
-                <button id="cancel" value="Cancel">search</button>
-            </form>
-            
+    <div class="container-outer"">
+        <nav class="nv-bar" style="font-size: 25px; font-family: sans-serif; background-color: whitesmoke; ">
+            <!-- <div class="item"> -->
+                Auto-Complete Feature using trie
+            <!-- </div> -->
+        </nav>
+        <div id="alert" class="alert alert-success" style="display: none;position: absolute;">
+            This alert will automatically 
+            close in 5 seconds.
         </div>
-        <div class="text_box" style="overflow-y: scroll">
-            <span id="info">
-            </span>
+
+        <div id="container">
+            <div class="text_box" style="display: flex">
+                <div class="middle">
+                <!-- <form autocomplete="off" style="margin: auto"> -->
+                    <!-- <h5>Type in the box below...</h5> -->
+                    <br>
+                    <div class="autocomplete"">
+                        <input id="myInput" type="text" placeholder="Search Name...">
+                        <!-- <button id="cancel" value="Cancel">search</button> -->
+                        <!--<a class="ks-items autocomplete-items" id="list"></a>-->
+                    </div>
+                    <button id="cancel"  class="btn btn-danger">Cancel</button>
+                <!-- </form> -->
+            </div>
+                
+            </div>
+            <!-- <div class="text_box" style="overflow-y: scroll">
+                <span id="info">
+                </span>
+            </div> -->
+        </div>
+
+
+        <div class="center_input">
+            <input type="text" placeholder="Enter contact name, number" id="contact_input">
+            <button class="btn btn-success" id="add">Add Contact</button>
+        </div>
+        <div class="center_input">
+            <input type="text" placeholder="Enter contact name" id="delete_input">
+            <button class="btn btn-danger" id="del">Delete Contact</button>
         </div>
     </div>
-
-
-    <div class="center_input">
-        <input type="text" placeholder="Enter contact name, number" id="contact_input">
-        <button class="btn btn-success" id="add">Add Contact</button>
-    </div>
-    <div class="center_input">
-        <input type="text" placeholder="Enter contact name" id="delete_input">
-        <button class="btn btn-danger" id="del">Delete Contact</button>
-    </div>
-    
     <template>
         <div class="list-group-item list-group-item-action" style="display: inline-flex">
             <span class="ks-avatar" style="align-content: center">
@@ -61,8 +69,7 @@
             </div>
         </div>
     </template>
-    <!-- <button class="add">add</button>
-    <button class="search">search</button> -->
+    
     
 </body>
 </html>

@@ -9,6 +9,7 @@ onload = function(){
     let delete_button = document.querySelector("#del")
     let search_input = document.querySelector("#myInput");
     let cancel_button = document.querySelector("#cancel");
+    let alert = document.getElementById('alert');
     const templates = document.getElementsByTagName('template')[0];
     const contact_item = templates.content.querySelector("div");
     let trie = new Trie();
@@ -18,15 +19,38 @@ onload = function(){
         let details = add_input.value;
         details = details.split(',');
         trie.add(details[0],details[1]);
-    }
-    cancel_button.onclick = function(){
-        trie.find(search_input.value);
-    //    console.log(trie.search(search_input.value));
-    }
-    // console.log(trie.search("neel"));
-    let autocomplete = (inp)=>{
-        inp.input = "";
+        
+        add_input.value = "";
 
+        
+        alert.innerHTML = details[0] + " added to your contact list";
+        alert.style.display = "inline-block";
+
+        setTimeout(function () {
+            // Closing the alert
+            alert.style.display = "none";
+        }, 3000);
+    }
+
+    cancel_button.onclick = function(){
+        search_input.value = "";
+    }
+
+    delete_button.onclick = function(){
+        trie.delete(delete_input.value);
+
+        alert.innerHTML = delete_input.value + " deleted from your contact list";
+        alert.style.display = "inline-block";
+
+        setTimeout(function () {
+            // Closing the alert
+            alert.style.display = "none";
+        }, 3000);
+    }
+    
+    let autocomplete = (inp)=>{
+        // inp.input = "";
+        
         inp.addEventListener("input",function(e){
             closeAllLists();
 

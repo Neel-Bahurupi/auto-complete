@@ -1,5 +1,3 @@
-console.log("hi");
-
 export { Trie }
 
 class TrieNode{
@@ -14,7 +12,6 @@ class TrieNode{
 class Trie{
     constructor(){
         this.root = new TrieNode();
-        // this.current = this.root;
 
         let dummy = [
             ["geek","12345"],
@@ -43,20 +40,20 @@ class Trie{
         current.name = name;
     }
 
-    search(name,pos=0){
-        let current = this.root;
+    // search(name,pos=0){
+    //     let current = this.root;
         
-        for(let i=0;i<name.length;i++){
-            let index = name.charCodeAt(i) - 97;
+    //     for(let i=0;i<name.length;i++){
+    //         let index = name.charCodeAt(i) - 97;
             
-            if(current.child[index]==null){
-                return false;
-            }
-            current = current.child[index];
-        }
-        console.log(current.number);
-        return true;
-    }
+    //         if(current.child[index]==null){
+    //             return false;
+    //         }
+    //         current = current.child[index];
+    //     }
+    //     console.log(current.number);
+    //     return true;
+    // }
 
     findAll(node,res){
         if(node===null){
@@ -87,6 +84,45 @@ class Trie{
             res.push([current.name , current.number])
         }
         return this.findAll(current,res);
+    }
+
+    isEmpty(current){
+        for(let i=0;i<26;i++){
+            if(current.child[i]!==null){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    delete(name,depth=0,current=this.root){
+        if(current === null){
+            return false;
+        }
+
+        if(depth == name.length){
+
+            if(current.isEnd === true){
+                current.isEnd = false;
+            }
+
+            return current;
+
+            // if(isEmpty(current)==true){
+
+            // }
+        }
+
+        let index = name.charCodeAt(depth) - 97;
+        current.child[index] = this.delete(name,depth+1, current.child[index]);
+
+        if(this.isEmpty(current) && current.isEnd === false){
+            current=null;
+        }
+
+        return current;
+
+
     }
 }
 
